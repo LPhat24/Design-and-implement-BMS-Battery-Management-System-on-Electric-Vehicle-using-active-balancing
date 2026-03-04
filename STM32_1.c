@@ -29,14 +29,14 @@
 /* USER CODE BEGIN PTD */
 uint16_t V[8];
 #define ADC_RESOLUTION    4095.0
-#define VREF              3.3f   // n?u b?n d˘ng Vref l‡ 3.3V
+#define VREF              3.3f   // n?u b?n d√πng Vref l√† 3.3V
 
-// D? li?u c?u hÏnh c?u ph‚n ·p tuong ?ng t?ng kÍnh Cell_1 ? Cell_8
-// M?i cell cÛ c?p R1 (trÍn) v‡ R2 (du?i)
+// D? li?u c?u h√¨nh c?u ph√¢n √°p tuong ?ng t?ng k√™nh Cell_1 ? Cell_8
+// M?i cell c√≥ c?p R1 (tr√™n) v√† R2 (du?i)
 const float R1[8] = { 1000, 2000, 2987, 4981, 5512, 6985, 7974, 9967 }; // ohm
 const float R2[8] = { 1000, 998, 998.4, 998, 997, 997.9, 997.5, 997.2 }; // ohm
 
-float Vadc[8];    // –i?n ·p t?i t?ng ch‚n ADC
+float Vadc[8];    // √êi?n √°p t?i t?ng ch√¢n ADC
 float v_meas[8];
 
 #define FILTER_SIZE 50
@@ -444,10 +444,10 @@ void Convert_ADC_To_CellVoltage(uint16_t *adc_raw)
 {
     for (int i = 0; i < 8; i++)
     {
-        // TÌnh di?n ·p sau c?u ph‚n ·p
+        // T√≠nh di?n √°p sau c?u ph√¢n √°p
         v_meas[i] = ((float)adc_raw[i] / ADC_RESOLUTION) * VREF;
 
-        // TÌnh di?n ·p th?t t?i node c?a cell (tru?c ph‚n ·p)
+        // T√≠nh di?n √°p th?t t?i node c?a cell (tru?c ph√¢n √°p)
         Vadc[i] = v_meas[i] * (R1[i] + R2[i]) / R2[i];
     }
 
